@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  {% include 'components/head.html' %}
+  <body>
+    
+  {% include 'components/nav.html' %}
+
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-12">
+        <h3 class="text-center">Tem certeza que quer deletar?</h3>
+        <p class="my-5 text-center">As informações relacionadas a o/a refugiado/a <b>{{ref.name}}</b> serão apagadas permanentemente.</p>
+        <form action="{% url 'core:refugiado_delete' ref.id %}" method="POST" class="d-flex justify-content-center">
+          {% csrf_token %}
+          <button class="btn btn-danger" type="submit">Confirmar</button>
+          <a href="{% url 'core:refugiado_list' %}" target="_self" class="btn btn-primary mx-4">Retornar</a>
+        </form>
+      </div>
+    </div>
+  </div>
+  </body>
+</html>

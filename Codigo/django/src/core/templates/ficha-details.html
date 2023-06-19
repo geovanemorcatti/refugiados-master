@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  {% include 'components/head.html' %}
+
+<body>
+  {% include 'components/nav.html' %}
+
+  <div class="container mt-5">
+    {% if edited %}
+    <div class="text-white bg-primary p-3 mb-5">Cadastro editado com sucesso.</div>
+    {% endif %}
+    <h3>{{main.name}}</h3>
+    <h5 class="font-weight-light">Ficha de cadastro para atendimento do serviço social</h5>
+    <form class="row g-3 needs-validation my-3" method="POST" action="{% url 'core:refugiado_ficha' main.id %}">
+      {% csrf_token %}
+      <input type="hidden" class="d-none" value="{{main.id}}" >
+      
+      <header class="bg-primary d-flex justify-content-center p-2"><span class="text-white">Dados gerais</span></header>
+      <div class="row mt-1 mb-2">
+        <div class="col-md-3">
+          <label for="validationTooltip01" class="form-label">Data do 1 atendimento</label>
+          <input type="date" class="form-control" name="dataPAtendimento" value="{{ref.dataPAtendimento}}" >
+        </div>
+        <div class="col-md-9 row align-content-center">
+          <div class="col-md-4 d-flex justify-content-center" style="max-height: 24px">
+            <input type="checkbox" class="form-check-input" name="dgTraficoDePessoas" {% if ref.dgTraficoDePessoas %}checked{% endif %}>
+            <label class="form-check-label px-2">Tráfico de pessoas</label>
+          </div>
+          <div class="col-md-4 d-flex justify-content-center" style="max-height: 24px">
+            <input type="checkbox" class="form-check-input" name="dgTrabalhoEscravo" {% if ref.dgTrabalhoEscravo %}checked{% endif %}>
+            <label class="form-check-label px-2">Trabalho Escravo</label>
+          </div>
+          <div class="col-md-4 d-flex justify-content-center" style="max-height: 24px">
+            <input type="checkbox" class="form-check-input" name="dgViolenciaDomestica" {% if ref.dgViolenciaDomestica %}checked{% endif %}>
+            <label class="form-check-label px-2">Violência doméstica</label>
+          </div>
+          <div class="col-md-4 d-flex justify-content-center" style="max-height: 24px">
+            <input type="checkbox" class="form-check-input" name="dgRegulacaoMigratoria" {% if ref.dgRegulacaoMigratoria %}checked{% endif %}>
+            <label class="form-check-label px-2">Regularização migratória</label>
+          </div>
+          <div class="col-md-4 d-flex justify-content-center" style="max-height: 24px">
+            <input type="checkbox" class="form-check-input" name="dgServicoSocial" {% if ref.dgServicoSocial %}checked{% endif %}>
+            <label class="form-check-label px-2">Serviço social</label>
+          </div>
+          <div class="col-md-4 d-flex justify-content-center" style="max-height: 24px">
+            <input type="checkbox" class="form-check-input" name="dgJuridico" {% if ref.dgJuridico %}checked{% endif %}>
+            <label class="form-check-label px-2">Jurídico</label>
+          </div>
+        </div>
+      </div>
+      
+      <header class="bg-primary d-flex justify-content-center p-2"><span class="text-white">Dados de identificação pessoal</span></header>
+      <div class="row mt-1 mb-2">
+        <div class="col-md-9">
+          <label for="validationTooltip01" class="form-label">Nome completo</label>
+          <input type="text" class="form-control" name="name" value="{{main.name}}" disabled>
+        </div>
+        <div class="col-md-3">
+          <label for="validationTooltip01" class="form-label">Estado civil</label>
+          <select name="estadoCivil" class="form-select" >
+            <option value="Casado" {% if ref.estadoCivil == 'Casado' %}selected{% endif %}>Casado</option>
+            <option value="Solteiro" {% if ref.estadoCivil == 'Solteiro' %}selected{% endif %}>Solteiro</option>
+            <option value="União estável" {% if ref.estadoCivil == 'União estável' %}selected{% endif %}>União estável</option>
+            <option value="Viúvo" {% if ref.estadoCivil == 'Viúvo' %}selected{% endif %}>Viúvo</option>
+            <option value="Divorciado" {% if ref.estadoCivil == 'Divorciado' %}selected{% endif %}>Divorciado</option>
+          </select>
+        </div>
+        <div class="col-md-3">
+          <label for="validationTooltip01" class="form-label">Data de nascimento</label>
+          <input type="date" class="form-control" name="dataNascimento" value="{{ref.dataNascimento}}" >
+        </div>
+        <div class="col-md-3">
+          <label for="validationTooltip01" class="form-label">Idade</label>
+          <input type="number" class="form-control" name="age" value="{{main.age}}" disabled>
+        </div>
+        <div class="col-md-3">
+          <label for="validationTooltip01" class="form-label">Religião</label>
+          <input type="text" class="form-control" name="religiao" value="{{ref.religiao}}" >
+        </div>
+        <div class="col-md-9">
+          <label for="validationTooltip01" class="form-label">Nome da mãe</label>
+          <input type="text" class="form-control" name="nomeDaMae" value="{{ref.nomeDaMae}}" >
+        </div>
+        <div class="col-md-3">
+          <label for="validationTooltip01" class="form-label">Grau de instrução</label>
+          <select name="grauDeInstrucao" class="form-select" >
+            <option value="Fund. Primário" {% if ref.grauDeInstrucao == 'Fund. Primário' %}selected{% endif %}>Fund. Primário</option>
+            <option value="Fund. Secundário" {% if ref.grauDeInstrucao == 'Fund. Secundário' %}selected{% endif %}>Fund. Secundário</option>
+            <option value="Médio" {% if ref.grauDeInstrucao == 'Médio' %}selected{% endif %}>Médio</option>
+            <option value="Técnico" {% if ref.grauDeInstrucao == 'Técnico' %}selected{% endif %}>Técnico</option>
+            <option value="Superior" {% if ref.grauDeInstrucao == 'Superior' %}selected{% endif %}>Superior</option>
+            <option value="Pós/Mestr./Dout." {% if ref.grauDeInstrucao == 'Pós/Mestr./Dout.' %}selected{% endif %}>Pós/Mestr./Dout.</option>
+            <option value=" Completo Inc." {% if ref.grauDeInstrucao == ' Completo Inc.' %}selected{% endif %}> Completo Inc.</option>
+            <option value="Incompleto" {% if ref.grauDeInstrucao == 'Incompleto' %}selected{% endif %}>Incompleto</option>
+          </select>
+        </div>
+        <div class="col-md-9">
+          <label for="validationTooltip01" class="form-label">Nome do pai</label>
+          <input type="text" class="form-control" name="nomeDoPai" value="{{ref.nomeDoPai}}" >
+        </div>
+        <div class="col-md-3">
+          <label for="validationTooltip01" class="form-label">Idioma</label>
+          <select name="language" class="form-select" disabled>
+            {% include 'components/select-options/linguas.html' with compare=main.language %}
+          </select>
+        </div>
+        <div class="col-md-3">
+          <label for="validationTooltip01" class="form-label">País de Nascimento</label>
+          <select name="paisNascimento" class="form-select" >
+            {% include 'components/select-options/pais.html' with compare=ref.paisNascimento %}
+          </select>
+        </div>
+        <div class="col-md-3">
+          <label for="validationTooltip01" class="form-label">Cidade de Nascimento</label>
+          <input type="text" class="form-control" name="cidadeNascimento" value="{{ref.cidadeNascimento}}">
+        </div>
+        <div class="col-md-3">
+          <label for="validationTooltip02" class="form-label" >Gênero</label>
+          <select name="gender" class="form-select" disabled>
+            <option value="masc" {% if main.gender == 'masc' %}selected{% endif %}>Masculino</option>
+            <option value="fem" {% if main.gender == 'fem' %}selected{% endif %}>Feminino</option>
+            <option value="nb" {% if main.gender == 'nb' %}selected{% endif %}>Não-binário</option>
+            <option value="outro" {% if main.gender == 'outro' %}selected{% endif %}>Outro</option>
+          </select>
+        </div>
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-3">
+          <label for="validationTooltip01" class="form-label">DNI</label>
+          <input type="text" class="form-control" name="dni" value="{{ref.dni}}" >
+        </div>
+        <div class="col-md-3">
+          <label for="validationTooltip01" class="form-label">RNE</label>
+          <input type="text" class="form-control" name="rne" value="{{ref.rne}}" >
+        </div>
+        <div class="col-md-3">
+          <label for="validationTooltip01" class="form-label">Passaporte</label>
+          <input type="text" class="form-control" name="passaporte" value="{{ref.passaporte}}" >
+        </div>
+        <div class="col-md-3">
+          <label for="validationTooltip01" class="form-label">CPF</label>
+          <input type="text" class="form-control" name="cpf" value="{{ref.cpf}}" >
+        </div>
+        <div class="col-md-6">
+          <label for="validationTooltip01" class="form-label">E-mail</label>
+          <input type="email" class="form-control" name="email" value="{{main.email}}" disabled>
+        </div>
+        <div class="col-md-3">
+          <label for="validationTooltip01" class="form-label">Telefone</label>
+          <input type="text" class="form-control" name="telefone" value="{{ref.telefone}}" >
+        </div>
+        <div class="col-md-3">
+          <label for="validationTooltip01" class="form-label">Celular</label>
+          <input type="text" class="form-control" name="celular" value="{{main.phoneNumber}}" disabled>
+        </div>
+        <div class="col-md-9">
+          <label for="validationTooltip02" class="form-label" >Motivo da vinda para o Brasil</label>
+          <select name="reasonToComeToBrazil" class="form-select" disabled>
+            <option value="Trabalho" {% if main.reasonToComeToBrazil == 'Trabalho' %}selected{% endif %}>Trabalho</option>
+            <option value="Estudos" {% if main.reasonToComeToBrazil == 'Estudos' %}selected{% endif %}>Estudos</option>
+            <option value="Turismo" {% if main.reasonToComeToBrazil == 'Turismo' %}selected{% endif %}>Turismo</option>
+            <option value="Familiar" {% if main.reasonToComeToBrazil == 'Familiar' %}selected{% endif %}>Familiar</option>
+          </select>
+        </div>
+        <div class="col-md-3">
+          <label for="validationTooltip01" class="form-label">Data de ingresso</label>
+          <input type="date" class="form-control" name="dataIngresso" value="{{ref.dataIngresso}}" >
+        </div>
+        <div class="col-md-9">
+          <label for="validationTooltip01" class="form-label">Rota para chegada no Brasil</label>
+          <input type="text" class="form-control" name="rotaChegadaBrasil" value="{{ref.rotaChegadaBrasil}}" >
+        </div>
+        <div class="col-md-3">
+          <label for="validationTooltip01" class="form-label">Número de filhos</label>
+          <input type="number" class="form-control" name="numeroDeFilhos" value="{{ref.numeroDeFilhos}}" >
+        </div>
+      </div>
+      
+      <header class="bg-primary d-flex justify-content-center p-2"><span class="text-white">Dados de residência</span></header>
+      <div class="row mt-1 mb-2">
+        <div class="col-md-9">
+          <label for="validationTooltip01" class="form-label">Endereço no Brasil</label>
+          <input type="text" class="form-control" name="enderecoBrasil" value="{{ref.enderecoBrasil}}" >
+        </div>
+        <div class="col-md-3">
+          <label for="validationTooltip01" class="form-label">Bairro</label>
+          <input type="text" class="form-control" name="enderecoBrasilBairro" value="{{ref.enderecoBrasilBairro}}" >
+        </div>
+        <div class="col-md-4">
+          <label for="validationTooltip01" class="form-label">Cidade</label>
+          <input type="text" class="form-control" name="enderecoBrasilCidade" value="{{ref.enderecoBrasilCidade}}" >
+        </div>
+        <div class="col-md-2">
+          <label for="validationTooltip01" class="form-label">Estado</label>
+          <input type="text" class="form-control" name="enderecoBrasilEstado" value="{{ref.enderecoBrasilEstado}}" >
+        </div>
+        <div class="col-md-3">
+          <label for="validationTooltip01" class="form-label">CEP</label>
+          <input type="text" class="form-control" name="enderecoBrasilCEP" value="{{ref.enderecoBrasilCEP}}" >
+        </div>
+        <div class="col-md-3">
+          <label for="validationTooltip01" class="form-label">Complemento</label>
+          <input type="text" class="form-control" name="enderecoBrasilComplemento" value="{{ref.enderecoBrasilComplemento}}" >
+        </div>
+        <div class="col-md-12">
+          <label for="validationTooltip01" class="form-label">Endereço no seu país/Endereço da família</label>
+          <input type="text" class="form-control" name="enderecoFamilia" value="{{ref.enderecoFamilia}}" >
+        </div>
+      </div>
+      
+      <header class="bg-primary d-flex justify-content-center p-2"><span class="text-white">Dados sobre trabalho</span></header>
+      <div class="row mt-1 mb-2">
+        <div class="col-md-6">
+          <label for="validationTooltip01" class="form-label">Profissão atual</label>
+          <select name="profissaoAtual" class="form-select">
+            {% include 'components/select-options/profissao.html' with compare=ref.profissaoAtual %}
+          </select>
+        </div>
+        <div class="col-md-6">
+          <label for="validationTooltip01" class="form-label">Carteira de trabalho</label>
+          <input type="text" class="form-control" name="carteiraDeTrabalho" value="{{ref.carteiraDeTrabalho}}" >
+        </div>
+        <div class="col-md-6">
+          <label for="validationTooltip01" class="form-label">Cargo/Função</label>
+          <input type="text" class="form-control" name="cargoOuFuncao" value="{{ref.cargoOuFuncao}}" >
+        </div>
+        <div class="col-md-6">
+          <label for="validationTooltip01" class="form-label">Outras informações</label>
+          <input type="text" class="form-control" name="outrasInfos" value="{{ref.outrasInfos}}" >
+        </div>
+        <div class="col-md-4">
+          <label for="validationTooltip01" class="form-label">Empresa</label>
+          <input type="text" class="form-control" name="empresa" value="{{ref.empresa}}" >
+        </div>
+        <div class="col-md-4">
+          <label for="validationTooltip01" class="form-label">Local</label>
+          <input type="text" class="form-control" name="localDeTrabalho" value="{{ref.localDeTrabalho}}" >
+        </div>
+        <div class="col-md-4">
+          <label for="validationTooltip01" class="form-label">Horário de trabalho</label>
+          <input type="text" class="form-control" name="horarioTrabalho" value="{{ref.horarioTrabalho}}" >
+        </div>
+      </div>
+      
+        <header class="bg-primary d-flex justify-content-center p-2"><span class="text-white">Dados sobre saúde</span></header>
+        <div class="row mt-1 mb-2">
+          <div class="col-md-12">
+            <label for="validationTooltip01" class="form-label">Problemas de saúde / doenças</label>
+            <input type="text" class="form-control" name="problemasSaude" value="{{ref.problemasSaude}}" >
+          </div>
+          <div class="col-md-12">
+            <label for="validationTooltip01" class="form-label">Medicamentos</label>
+            <input type="text" class="form-control" name="medicamentos" value="{{ref.medicamentos}}" >
+          </div>
+          <div class="col-md-4">
+            <label for="validationTooltip01" class="form-label">Cartão SUS</label>
+            <input type="text" class="form-control" name="cartaoSus" value="{{ref.cartaoSus}}" >
+          </div>
+          <div class="col-md-4">
+            <label for="validationTooltip01" class="form-label">Benefícios</label>
+            <input type="text" class="form-control" name="beneficios" value="{{ref.beneficios}}" >
+          </div>
+          <div class="col-md-4">
+            <label for="validationTooltip02" class="form-label" >Vícios</label>
+            <select name="saudeVicios" class="form-select" >
+              <option value="Nenhum" {% if ref.saudeVicios == 'Nenhum' %}selected{% endif %}>Nenhum</option>
+              <option value="Alcóolatra" {% if ref.saudeVicios == 'Alcóolatra' %}selected{% endif %}>Alcóolatra</option>
+              <option value="Fumante" {% if ref.saudeVicios == 'Fumante' %}selected{% endif %}>Fumante</option>
+              <option value="Dep. Química" {% if ref.saudeVicios == 'Dep. Química' %}selected{% endif %}>Dep. Química</option>
+              <option value="Outros" {% if ref.saudeVicios == 'Outros' %}selected{% endif %}>Outros</option>
+            </select>
+          </div>
+      </div>
+
+      <div class="col-12 mt-5">
+        <button class="btn btn-primary px-5" type="submit">Salvar dados</button>
+      </div>
+    </form>
+  </div>
+
+  </form>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+    crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js" type="text/javascript"></script>
+  <script src="JS/index.js"></script>
+
+</body>
+
+</html>

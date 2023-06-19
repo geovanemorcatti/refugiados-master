@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  {% include 'components/head.html' %}
+  <body>
+  {% include 'components/nav.html' %}
+    
+    <div class="container mt-5">
+        {% if created %}
+        <div class="text-white bg-success p-3 mb-5">Solicitação criada com sucesso. <a href="{% url 'core:solicitacao_report' sol_id.id %}" class="text-white">Clique aqui para acessá-la</a></div>
+        {% endif %}
+        <form class="row g-3" method="POST" action="{% url 'core:solicitacao_new' ref.id %}">
+          {% csrf_token %}
+            <div class="col-12 mb-3"><b>Cadastrar solicitação para {{ref.name}}</b></div>
+            <div class="col-md-6 position-relative">
+              <label for="validationTooltip01" class="form-label" id="PNome">Título da solicitação</label>
+              <input type="text" class="form-control" name="titulo" required>
+            </div>
+            <div class="col-md-6 position-relative">
+              <label for="validationTooltip02" class="form-label">Área</label>
+              <select name="area" class="form-select" required>
+                {% for area in area_list %}
+                  <option value="{{area.id}}">{{area.name}}</option>
+                {% endfor %}
+              </select>
+            </div>
+            <div class="">
+              <label for="validationTooltip03" class="form-label" id="idade">Texto da solicitação</label>
+              <textarea class="form-control" name="texto" rows="6" required></textarea>
+            </div>
+            
+            <div class="col-12 my-4 text-center">
+              <button class="btn btn-success " type="submit">Salvar solicitação</button>
+            </div>
+          </form>
+        
+    </div>
+   
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+    <!--<script src="JS/index.js"></script>-->
+   
+  </body>
+</html>

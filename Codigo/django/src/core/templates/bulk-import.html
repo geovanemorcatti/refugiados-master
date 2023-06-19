@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  {% include 'components/head.html' %}
+  <style>
+    th,td {
+      text-align: center;
+    }
+  </style>
+  <body>
+    
+  {% include 'components/nav.html' %}
+
+  <div class="container mt-5">
+    {% if edited %}
+      <div class="text-white bg-success p-3 mb-5">Importação concluída. Dados de {{import_count}} refugiados importados.</div>
+    {% endif %}
+    <div class="row">
+      <div class="col-12 card px-0">
+        <div class="card-header w-100">
+          <h2 class="text-center">Importar dados</h2>
+        </div>
+        <div class="card-body">
+          <p>Você só pode fazer o envio de arquivos no formato XLSX, seguindo o modelo fornecido com a documentação. Caso você tente importar os dados de um refugiado exatamente com o mesmo nome de um existente, ele será ignorado. Insira um refugiado por linha.</p>
+          <div class="card mb-5">
+            <div class="card-header py-1">
+              <h5 class="my-0">Ações</h5>
+            </div>
+            <div class="card-body">
+              <form action="{% url 'core:refugiado_bulk_import' %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <input type="file" name="file" class="form-control" required accept=".xlsx">
+                <button type="submit" class="btn btn-primary mx-2 mt-5">Importar</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </body>
+</html>

@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+
+    <title>Login</title>
+  </head>
+  <body>
+    
+    <form class="container d-flex flex-column justify-content-center px-5 row align-items-center mx-0" style="height: 100vh; width: 100vw; max-width: 100vw" method="post">
+      <style>
+        .errorlist.nonfield {
+          max-width: 480px !important;
+          list-style: none !important;
+          font-weight: bold !important;
+        }
+        form>p {
+          max-width: 360px !important;
+          display: flex !important;
+          flex-flow: column !important;
+        }
+        form>p>input {
+          height: 36px;
+          border-radius: 8px;
+          border: 1px solid #969696;
+        }
+        .svm-logo {
+          margin-bottom: 32px;
+        }
+      </style>
+      <h2 class="text-center mb-2">Área restrita</h2>
+      {% include 'components/logo-svg.html' %}
+      {% csrf_token %}
+      {{ form.as_p }}
+      <div class="col-4 my-2 text-center">
+        <button class="btn btn-primary px-5" type="submit">Login</button>
+      </div>
+        
+    </form>
+   
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+    <script src="JS/document.js"></script>
+   
+  </body>
+</html>

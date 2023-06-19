@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+
+    <title>add refugiado detalhado</title>
+  </head>
+  <body>
+    
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark" aria-label="Third navbar example" id="barra">
+        <div class="container-fluid">
+          <a class="navbar-brand navbar-brasao" href="#"><img class ="lyzy" src="imagens/brasao-peq.png" alt=""></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" name="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+    
+          <div class="collapse navbar-collapse" id="navbarsExample03">
+            <ul class="navbar-nav me-auto mb-2 mb-sm-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="AddRefugiados.html">Adicionar Refigiado </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="List.html">lista refuciados</a>
+              </li>
+              
+              <!-- Required meta tags 
+              <li class="nav-item">
+                <a class="nav-link disabled">Disabled</a>
+              </li>
+              
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a>
+                <ul class="dropdown-menu" aria-labelledby="dropdown03">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li>
+              -->
+            </ul>
+            <form>
+              <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+            </form>
+          </div>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <form class="row  needs-validation" novalidate>
+            <!-- -->
+            <subtitle id="subtitulo0"> Dados geral </subtitle>
+        <!---->
+        <div class="col-lg-10  col-md-4 position-relative">
+        <label for="validationTooltip53" class="form-label" id="data1" > data do primeiro atendimento </label>
+        <input type="text" class="form-control" id="validationTooltip53" name= "dataprimeiro" required >
+        </div>
+         <!--troca para opçoes -->
+        <div class="col-lg-10  col-md-4 position-relative">
+        <label for="validationTooltip54" class="form-label" id="motivo">Motivo </label>
+        <select class="form-select" aria-label="Default select example" name ="motivo">
+          <option selected>selecione</option>
+          <option name="motivo1" value="1">Tráfico de Pessoas</option>
+          <option name="motivo2" value="2">Regularização Migratória</option>
+          <option name="motivo3" value="3"> Trabalho Escravo</option>
+          <option name="motivo4" value="4">Violência Doméstica</option>
+          <option name="motivo5" value="5">juridico</option>
+        </select>
+        </div>
+            
+            <!-- -->
+            <subtitle id="subtitulo1"> Dados de identificação pessoal </subtitle>
+            <div class=" col-lg-10 col-md-4 position-relative">
+              <label for="validationTooltip01" class="form-label" id="PNome"> Nome completo:</label>
+              <input type="text" class="form-control" id="validationTooltip01" value="Mark" name= "NomeCompleto" required>
+              <div class="valid-tooltip">
+                Looks good!
+              </div>
+            </div>
+            
+           <!---->
+           <div class="col-lg-10 col-md-4 position-relative">
+            <label for="validationTooltip03" class="form-label" id="data de Nascimento">Data de nacimento </label>
+            <input type="text" class="form-control" id="validationTooltip03" name= "DataDeNacimento" required>
+            </div>
+            <!---->
+            <div class=" col-lg-10 col-md-4 position-relative">
+                <label for="validationTooltip04" class="form-label" id="sexo">sexo </label>
+                <input type="text" class="form-control" id="validationTooltip04" name= "Sexo" required>
+              </div>
+            <!---->
+            <div class=" col-lg-10 col-md-4 position-relative">
+            <label for="validationTooltip05" class="form-label" id="Reliagião">Reliagião </label>
+            <input type="text" class="form-control" id="validationTooltip05" name= "Reliagião" required>
+            </div>
+            <!-- troca  -->
+            <div class=" col-lg-10 col-md-4 position-relative">
+            <label for="validationTooltip06" class="form-label" id="estado civil">Estado Civil </label>
+            <select class="form-select" aria-label="Default select example" name="EstadoscivilDivorciado">
+              <option selected> Estado Civil ?</option>
+              <option value="1" name="EstadoscivilCasado">Casado</option>
+              <option value="2" name="EstadoscivilSolteiro">Solteiro</option>
+              <option value="3" name="EstadoscivilUniaoEstavel">União Estável</option>
+              <option value="4" name="EstadoscivilViuvo"> Viúvo</option>
+              <option value="5" name="EstadoscivilDivorciado">Divorciado</option>
+            </select>
+            </div>
+            <!---->
+            <div class="col-lg-10 col-md-4 position-relative">
+            <label for="validationTooltip07" class="form-label" id="NomeDoPai">Nome de pai </label>
+            <input type="text" class="form-control" id="validationTooltip07" name= "NomeDePai" required>
+            </div>  
+            <!---->
+            <div class="col-lg-10 col-md-4 position-relative">
+            <label for="validationTooltip08" class="form-label" id="NomeDaMae">Nome da Mae </label>
+            <input type="text" class="form-control" id="validationTooltip08" name= "dataprimeiro" required>
+            </div>  
+            <!---->
+            <div class="col-lg-10 col-md-4 position-relative">
+            <label for="validationTooltip09" class="form-label" id="PaisDeNaciemnto">Pais de Origem</label>
+            <input type="text" class="form-control" id="validationTooltip09" name= "PaisDEOrigem" required>
+            </div>
+            <!---->
+            <div class="col-lg-10 col-md-4 position-relative">
+            <label for="validationTooltip10" class="form-label" id="cidade">Cidade </label>
+            <input type="text" class="form-control" id="validationTooltip10"  name= "Cidade" required>
+            </div>
+            <!--troca-->
+            <div class="col-lg-10 col-md-6 position-relative">
+            <label for="validationTooltip11" class="form-label" id="idiomas">Idiomas</label>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+              <label class="form-check-label" for="inlineCheckbox1" name = "Portugues">Portugues</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+              <label class="form-check-label" for="inlineCheckbox2" name ="Espanhol"> Espanhol</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+              <label class="form-check-label" for="inlineCheckbox3" name ="ingles"> ingles</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="option4">
+              <label class="form-check-label" for="inlineCheckbox4" neme ="Frences">Francês</label>
+            </div> 
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox5" value="option4">
+              <label class="form-check-label" for="inlineCheckbox5" neme ="outros">outro</label>
+            </div>   
+            </div>
+            <!--troca-->
+            <div class="col-lg-10 col-md-4 position-relative">
+            <label for="validationTooltip12" class="form-label" id="GrauDeIstrução">Grau de Istrução </label>
+            <select class="form-select" aria-label="Default select example" name="GrauDeIstrução">
+              <option selected>selecione</option>
+              <option value="1"> Fund. Primário</option>
+              <option value="2"> Fund. Secundário</option>
+              <option value="3">Médio</option>
+              <option value="4">Técnico</option>
+              <option value="5">Superior</option>
+              <option value="6">Pós/Mestr./Dout.</option>
+              <option value="7"> Completo Inc.</option>
+              <option value="8">Incompleto</option>
+            </select>
+            </div>
+            <!---->
+            <div class="col-lg-10 col-md-4 position-relative">
+            <label for="validationTooltip13" class="form-label" id="DNI">DNI </label>
+            <input type="number" class="form-control" id="validationTooltip13" name= "DNI" required>
+            </div>
+           <!---->
+           <div class="col-lg-10 col-md-4 position-relative">
+            <label for="validationTooltip14" class="form-label" id="Passaporte"> Passaporte</label>
+            <input type="number" class="form-control" id="validationTooltip14" name= "Passaporte" required>
+            </div>
+           <!---->
+           <div class="col-lg-10 col-md-4 position-relative">
+            <label for="validationTooltip15" class="form-label" id="RNE">RNE </label>
+            <input type="number" class="form-control" id="validationTooltip15"  name ="RNE"required>
+            </div>                  
+           <!---->
+           <div class="col-lg-10 col-md-4 position-relative">
+            <label for="validationTooltip16" class="form-label" id="CPF">CPF </label>
+            <input type="number" class="form-control" id="validationTooltip16" name= "CPF"required>
+            </div>
+           <!---->
+           <div class=" col-lg-10 col-md-4 position-relative">
+            <label for="validationTooltip17" class="form-label" id="email">Email </label>
+            <input type="email" class="form-control" id="validationTooltip17"name= "Email" required>
+            </div>
+           <!---->
+           <div class=" col-lg-10 col-md-4 position-relative">
+            <label for="validationTooltip18" class="form-label" id="telefone">telefone </label>
+            <input type="number" class="form-control" id="validationTooltip18" name= "telefone" required>
+            </div>      
+           <!---->
+           <div class=" col-lg-10 col-md-4 position-relative">
+            <label for="validationTooltip19" class="form-label" id="Celular">Celular </label>
+            <input type="number" class="form-control" id="validationTooltip19" name= "Celular" required>
+            </div>
+           <!--trocar -->
+        <div class=" col-lg-10 col-md-4 position-relative">
+        <label for="validationTooltip20" class="form-label" id="motivoVindaBrasil">Motivo vinda ao Brasil </label>
+        <select class="form-select" aria-label="Default select example" name="MotivoVindaaoBrasil"> 
+          <option selected>selecione</option>
+          <option value="1">Trabalho</option>
+          <option value="2">Estudos</option>
+          <option value="3">Turismo</option>
+          <option value="4">Familiar</option>
+          <option value="5">outros</option>
+        </select>
+        </div>      
+        
+        <!---->
+        <div class=" col-lg-10 col-md-4 position-relative">
+        <label for="validationTooltip21" class="form-label" id="DatadeIngresso">data de ingresso: </label>
+        <input type="number" class="form-control" id="validationTooltip21"  name ="DatadeIngresso "required>
+        </div>
+        <!---->
+        <div class=" col-lg-10 col-md-4 position-relative">
+        <label for="validationTooltip22" class="form-label" id="RotaparachegaraoBrasil">Rota para chegar ao Brasil: </label>
+        <input type="number" class="form-control" id="validationTooltip22" name ="RotaparachegaraoBrasil" required>
+        </div>
+        <!---->
+        <div class=" col-lg-10 col-md-4 position-relative">
+        <label for="validationTooltip23" class="form-label" id="NúmerodeFilhos">Número de Filhos: </label>
+        <input type="number" class="form-control" id="validationTooltip23" name="NúmerodeFilhos" required>
+        </div>
+        <subtitle id="subtitulo3"> Dados de Residência </subtitle>
+        <!---->
+        <div class=" col-lg-10 col-md-4 position-relative">
+        <label for="validationTooltip24" class="form-label" id="EndereçonoBrasil">Endereço no Brasil: </label>
+        <input type="text" class="form-control" id="validationTooltip24" name="EndereçonoBrasil" required>
+        </div>
+        <!---->
+        <div class=" col-lg-10 col-md-4 position-relative">
+        <label for="validationTooltip25" class="form-label" id="Cidade">Cidade: </label>
+        <input type="text" class="form-control" id="validationTooltip25" id="Cidade" name="Cidade" required>
+        </div>
+        <!--troca-->
+        <div class=" col-lg-10 col-md-4 position-relative">
+        <label for="validationTooltip26" class="form-label" id="Estados">Estados: </label>
+        <select class="form-select" aria-label="Default select example" name ='Estados'>
+          <option selected>Selecione os estados</option>
+          <option value="1">Acre</option>
+          <option value="2">Alagoas</option>
+          <option value="3">Amapá</option>
+          <option value="4">Amazonas</option>
+          <option value="5">Bahia</option>
+          <option value="6">Ceará</option>
+          <option value="7">Espírito Santo</option>
+          <option value="8">Goiás</option>
+          <option value="9">Maranhão</option>
+          <option value="10">Mato Grosso do Sul</option>
+          <option value="11">Minas Gerais</option>
+          <option value="12">Pará</option>
+          <option value="13">Paraíba</option>
+          <option value="14">Paraná</option>
+          <option value="15">Pernambuco</option>
+          <option value="16">Piauí</option>
+          <option value="17">Rio de Janeiro</option>
+          <option value="18">Rio Grande do Norte</option>
+          <option value="19">Rio Grande do Sul</option>
+          <option value="20">Rondônia</option>
+          <option value="21">Roraima</option>
+          <option value="22">Santa Catarina</option>
+          <option value="23">São Paulo</option>
+          <option value="24">Sergipe</option>
+          <option value="25">Tocantins</option>
+          <option value="26">Distrito Federal</option>
+        </select>
+        </div>
+        <!---->
+        <div class=" col-lg-10  col-md-4 position-relative">
+        <label for="validationTooltip27" class="form-label" id="bairro">Bairro: </label>
+        <input type="text" class="form-control" id="validationTooltip27"name="Bairro" required>
+        </div>
+        <!---->
+        <div class=" col-lg-10 col-md-4 position-relative">
+        <label for="validationTooltip28" class="form-label" id="CEP">Código Postal (CEP):</label>
+        <input type="text" class="form-control" id="validationTooltip28" name=CEP required>
+        </div>
+        <!---->
+        <div class=" col-lg-10 col-md-4 position-relative">
+        <label for="validationTooltip29" class="form-label" id="Complemento">Complemento:</label>
+        <input type="text" class="form-control" id="validationTooltip29" name="Complemento" required>
+        </div>
+        <subtitle id="subtitulo4"> Dados sobre trabalho </subtitle>
+         <!---->
+        <div class=" col-lg-10  col-md-4 position-relative">
+        <label for="validationTooltip30" class="form-label" id="ProfissãoAtual">Profissão Atual:</label>
+        <input type="text" class="form-control" id="validationTooltip30" name="ProfissãoAtual" required>
+        </div>
+        <!--trocar-->
+        <div class=" col-lg-10 col-md-4 position-relative">
+        <label for="validationTooltip31" class="form-label" id="CarteiraDeTrabalho">Carteira de Trabalho?</label>
+        <div class="form-check" name="CarteiraDeTrabalho" >
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault" name ="CarteiraDeTrabalhosim">
+            sim 
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+          <label class="form-check-label" for="flexCheckChecked" name="CarteiraDeTrabalhonao">
+            nao
+          </label>
+        </div>
+        </div>
+        <!---->
+        <div class=" col-lg-10 col-md-4 position-relative">
+        <label for="validationTooltip32" class="form-label" id="numeroCarteiraDeTrabalho">Numero da Carteira de Trabalho:</label>
+        <input type="number" class="form-control" id="validationTooltip32"  name="numeroCarteiraDeTrabalho"required>
+        </div>
+         <!---->
+        <div class=" col-lg-10 col-md-4 position-relative">
+        <label for="validationTooltip33" class="form-label" id="SerieCarteiraDeTrabalho">Série Carteira de Trabalho:</label>
+        <input type="number" class="form-control" id="validationTooltip33" name="SerieCarteiraDeTrabalho"  required>
+        </div>
+        <!---->
+        <div class=" col-lg-10 col-md-4 position-relative">
+        <label for="validationTooltip34" class="form-label" id="UFCarteiraDeTrabalho">UF Carteira de Trabalho:</label>
+        <input type="text" class="form-control" id="validationTooltip34" name="UFCarteiraDeTrabalho" required>
+        </div>
+        <!---->
+        <div class=" col-lg-10 col-md-4 position-relative">
+        <label for="validationTooltip35" class="form-label" id="CargoFunção">Cargo / Função:</label>
+        <input type="text" class="form-control" id="validationTooltip35" name="CargoFunção"required>
+        </div>
+         <!---->
+        <div class=" col-lg-10 col-md-4 position-relative">
+        <label for="validationTooltip36" class="form-label" id="Area">Area(mai):</label>
+        <input type="text" class="form-control" id="validationTooltip36" name="Area" required>
+        </div>
+         <!--trocar-->
+        <div class=" col-lg-10 col-md-4 position-relative">
+        <label for="validationTooltip37" class="form-label" id="outrasopçoes">Outras Opções:</label>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+          Desempregado
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+          <label class="form-check-label" for="flexCheckChecked">
+          Autônomo sem registro
+          </label>
+        </div>
+        </div>
+        <!---->
+        <div class=" col-lg-10  col-md-4 position-relative">
+        <label for="validationTooltip38" class="form-label" id="Empresa">Empresa</label>
+        <input type="text" class="form-control" id="validationTooltip38" name="Empresa"required>
+        </div>
+        <!---->
+        <div class="  col-lg-10  col-md-4 position-relative">
+        <label for="validationTooltip39" class="form-label" id="local">local</label>
+        <input type="text" class="form-control" id="validationTooltip39"  name="local" required>
+        </div>
+        <!---->
+        <div class="  col-lg-10  col-md-4 position-relative">
+        <label for="validationTooltip39" class="form-label" id="horas">horas</label>
+        <input type="number" class="form-control" id="validationTooltip39" name="horas" required>
+        <label for="">a</label>
+        <input type="number" class="form-control" id="validationTooltip39.1" required>
+        </div>
+        <subtitle id="subtitulo5"> Dados Sobre Saúde </subtitle>
+        <!---->
+        <div class="  col-lg-10  col-md-4 position-relative">
+        <label for="validationTooltip40" class="form-label" id="local">local</label>
+        <textarea type="text" class="form-control" id="validationTooltip40" name="local" required></textarea>
+        </div>
+        <!---->
+        <div class=" col-lg-10  col-md-4 position-relative">
+        <label for="validationTooltip41" class="form-label" id="medicamento">medicamento</label>
+        <textarea type="text" class="form-control" id="validationTooltip41" name="medicamento" required></textarea>
+        </div>
+        <!--trocar-->
+        <div class="  col-lg-10  col-md-4 position-relative">
+        <label for="validationTooltip42" class="form-label" id="vicios">vicios</label>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+          <label class="form-check-label" for="inlineCheckbox1" name="VicioAlcoólatra">Alcoólatra</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+          <label class="form-check-label" for="inlineCheckbox2" neme= "VicioFumante">Fumante</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3" >
+          <label class="form-check-label" for="inlineCheckbox3" name="viciosdepquimica">Dep. Química</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="option4" >
+          <label class="form-check-label" for="inlineCheckbox4" name="viciosOutros">Dep. Química</label>
+        </div>
+        </div>
+        <!---->
+        <div class="  col-lg-10  col-md-4 position-relative">
+        <label for="validationTooltip43" class="form-label" id="CartaoSUS">Cartao SUS</label>
+        <input type="checkbox"  class=" "name="NãoSUS" id="nao"><label for="">Não</label>
+        <input type="number" class="form-control" id="validationTooltip43" name="CartaoSUS" required>
+        </div>
+        <!---->
+        <div class="  col-lg-10  col-md-4 position-relative">
+        <label for="validationTooltip44" class="form-label" id="Beneficio">Beneficio</label>
+        <textarea type="text" class="form-control" id="validationTooltip44" name="Beneficio" required></textarea>
+        </div>
+        <subtitle id="subtitulo6"> Dados de indentificaçao pessoal </subtitle>
+        <!---->
+        <div class=" col-lg-10  col-md-4 position-relative">
+        <label for="validationTooltip45" class="form-label" id="Documentaçao">Ducumentação: </label>
+        <textarea type="text" class="form-control" id="validationTooltip45" name="Documentaçao" required></textarea>
+        </div>
+        <!---->
+        <div class="  col-lg-10  col-md-4 position-relative">
+        <label for="validationTooltip46" class="form-label" id="Educaçao">Educação:</label>
+        <textarea type="text" class="form-control" id="validationTooltip46" name="Educaçao" required></textarea>
+        </div>
+         <!---->
+        <div class="col-lg-10  col-md-4 position-relative">
+        <label for="validationTooltip47" class="form-label" id="Saude">Saúde: </label>
+        <textarea type="text" class="form-control" id="validationTooltip47" name="Saude" required></textarea>
+        </div>
+        <!---->
+        <div class="col-lg-10  col-md-4 position-relative">
+        <label for="validationTooltip48" class="form-label" id="Trabalho">Trabalho: </label>
+        <textarea type="text" class="form-control" id="validationTooltip48"  name="Trabalho"required></textarea>
+        </div>
+        <!---->
+        <div class="col-lg-10  col-md-4 position-relative">
+        <label for="validationTooltip49" class="form-label" id="Curso">Curso:</label>
+        <textarea type="text" class="form-control" id="validationTooltip49" name="Curso" required></textarea>
+        </div>
+        <!---->
+        
+        <!---->
+        <div class="col-lg-10  col-md-4 position-relative">
+        <label for="validationTooltip50" class="form-label" id="Habitação">Habitação</label>
+        <textarea type="text" class="form-control" id="validationTooltip50" name="Habitação" required></textarea>
+        </div>
+        <!---->
+        <div class="col-lg-10  col-md-4 position-relative">
+        <label for="validationTooltip51" class="form-label" id="outrosserviços">Outros serviços</label>
+        <textarea type="text" class="form-control" id="validationTooltip51"  name="outrosserviços" required></textarea>
+        </div>
+        <!---->
+        <div class="col-lg-10  col-md-4 position-relative">
+        <label for="validationTooltip52" class="form-label" id="anotaçoes"> Anotações de atendimento</label>
+        <textarea type="text" class="form-control" id="validationTooltip52" name="anotaçoes" required></textarea>
+        </div>
+    
+    
+        
+        <div class="col-lg-5 col-10">
+        <button class="btn btn-primary" type="submit" name = "cadastradetalhada"> Cadastra</button>
+        </div>
+          </form>
+        
+    </div>
+   
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+    <!--<script src="JS/index.js"></script>-->
+   
+  </body>
+</html>

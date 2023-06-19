@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  {% include 'components/head.html' %}
+  <style>
+    th,td {
+      text-align: center;
+    }
+  </style>
+  <body>
+    
+  {% include 'components/nav.html' %}
+
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-12 card px-0">
+        <div class="card-header w-100">
+          <h2 class="text-center">Relatório de encaminhamentos</h2>
+        </div>
+        <div class="card-body">
+          <div class="card mb-5">
+            <div class="card-header py-1">
+              <h5 class="my-0">Filtrar</h5>
+            </div>
+            <div class="card-body">
+              <form class="w-100 row my-3" method="POST" action="{% url 'core:report_geral' %}">
+                {% csrf_token %}
+                <small>Deixe o campo em branco para não filtrar por ele</small>
+                <div class="col-12 d-flex flex-row align-content-center py-3">
+                  <div class="d-flex flex-row align-content-center"><label for="date_min" style="white-space: nowrap; align-self: center;">Data mínima</label></div>
+                  <div class="px-3"><input type="date" name="date_min" class="form-control" value="{{filter.date_min}}" placeholder="Data mínima"></div>
+                </div>
+                <div class="col-12 d-flex flex-row align-content-center py-3">
+                  <div class="d-flex flex-row align-content-center"><label for="date_max" style="white-space: nowrap; align-self: center;">Data máxima</label></div>
+                  <div class="px-3"><input type="date" name="date_max" class="form-control" value="{{filter.date_max}}" placeholder="Data mínima"></div>
+                </div>
+                <div class="col-12 d-flex flex-row align-content-center py-3">
+                  <div class="d-flex flex-row align-content-center"><label for="area" style="white-space: nowrap; align-self: center;">Área</label></div>
+                  <div class="px-3">
+                    <select name="area" class="form-select">
+                      <option value="NULL" {% if not filter.area %}selected{% endif %}>Todas</option>
+                      {% for area in area_list %}
+                        <option value="{{area.id}}" {% if filter.area == area.id %}selected{% endif %}>{{area.name}}</option>
+                      {% endfor %}
+                    </select>
+                  </div>
+                </div>
+                <div class="col-12"><button type="submit" class="btn btn-primary" style="width: 300px;">Aplicar filtros</button></div>
+              </form>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <h4 class="text-center">Encaminhamentos</h4>
+              <button type="button" class="btn btn-secondary" style="width: 300px;" id="download-button">Baixar CSV</button>
+            </div>
+            <div class="card-body">
+              <table class="table ">
+                <thead class="thead-light bg-dark text-white">
+                  <tr>
+                    <th>Data</th>
+                    <th>Autor(a)</th>
+                    <th>Refugiado(a)</th>
+                    <th>Área</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for act in acao_list %}
+                  <tr>
+                    <td>{{act.date}}</td>
+                    <td>{{act.user.first_name}}</td>
+                    <td>{{act.refName}}</td>
+                    <td>{{act.areaName}}</td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </body>
+
+  <script>
+    function htmlToCSV(html, filename) {
+    var data = [];
+    var rows = document.querySelectorAll("table tr");
+        
+    for (var i = 0; i < rows.length; i++) {
+        var row = [], cols = rows[i].querySelectorAll("td, th");
+            
+        for (var j = 0; j < cols.length; j++) {
+                row.push(cols[j].innerText);
+            }
+                
+        data.push(row.join(",")); 		
+      }
+
+      downloadCSVFile(data.join("\n"), filename);
+    }
+  </script>
+  <script>
+    function downloadCSVFile(csv, filename) {
+      var csv_file, download_link;
+    
+      csv_file = new Blob([csv], {type: "text/csv"});
+    
+      download_link = document.createElement("a");
+    
+      download_link.download = filename;
+    
+      download_link.href = window.URL.createObjectURL(csv_file);
+    
+      download_link.style.display = "none";
+    
+      document.body.appendChild(download_link);
+    
+      download_link.click();
+    }
+  </script>
+  <script>
+    document.getElementById("download-button").addEventListener("click", function () {
+      var html = document.querySelector("table").outerHTML;
+      htmlToCSV(html, "students.csv");
+    });
+  </script>
+</html>

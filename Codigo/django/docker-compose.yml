@@ -1,0 +1,64 @@
+version: "3.7"
+
+services:
+  web:
+    volumes:
+      - type: bind
+        source: ./src
+        target: /code
+    build:
+      context: "."
+      dockerfile: "docker/web.Dockerfile"
+    image: puc_refugiados_web
+    container_name: puc_refugiados_web
+    restart: always
+    env_file: 
+      - ./src/dev.env
+    networks:
+      - nginx_network
+      - db_network
+    expose:
+      - 8000
+    depends_on:
+      - db
+
+  nginx:
+    build: ./nginx
+    volumes:
+      - type: bind
+        source: ./src
+        target: /code
+    ports:
+      - 80:80
+    networks:
+      - nginx_network
+    depends_on:
+      - web
+
+  db:
+    build:
+      context: "./docker"
+      dockerfile: "db.Dockerfile"
+    restart: always
+    networks:
+      - db_network
+    volumes:
+      - postgres:/var/lib/postgresql/data
+      - ./postgresql/conf:/etc/postgresql/
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+    ports:
+      - 5432:5432
+
+
+networks:
+  nginx_network:
+    driver: bridge
+  db_network:
+    driver: bridge
+
+volumes:
+  postgres:
+    

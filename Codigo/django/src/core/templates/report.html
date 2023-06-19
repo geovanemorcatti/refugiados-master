@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  {% include 'components/head.html' %}
+  <style>
+    th,td {
+      text-align: center;
+    }
+  </style>
+  <body>
+    
+  {% include 'components/nav.html' %}
+
+  <div class="container mt-5">
+    {% if edited %}
+    <div class="text-white bg-success p-3 mb-5">Cadastro editado com sucesso.</div>
+    {% endif %}
+    <div class="row">
+      <div class="col-12 card px-0">
+        <div class="card-header w-100">
+          <h2 class="text-center">{{ref.name}}</h2>
+        </div>
+        <div class="card-body">
+          <div class="card mb-5">
+            <div class="card-header py-1">
+              <h5 class="my-0">Ações</h5>
+            </div>
+            <div class="card-body">
+              <a href="{% url 'core:refugiado_edit' ref.id %}" class="btn btn-primary mx-2">Editar</a>
+              <a href="{% url 'core:refugiado_ficha' ref.id %}" class="btn btn-info mx-2">Ficha detalhada</a>
+              <a href="{% url 'core:solicitacao_new' ref.id %}" class="btn btn-success mx-2">Cadastrar solicitação</a>
+              <a href="{% url 'core:refugiado_ficha_export' ref.id %}" class="btn btn-dark mx-2">Exportar para Excel</a>
+              <a href="{% url 'core:refugiado_delete' ref.id %}" class="btn btn-danger mx-2 float-end">Deletar</a>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <h4 class="text-center">Histórico de solicitações</h4>
+            </div>
+            <div class="card-body">
+              <table class="table ">
+                <thead class="thead-light bg-dark text-white">
+                  <tr>
+                    <th>Data</th>
+                    <th>Autor(a)</th>
+                    <th>Título</th>
+                    <th>Área</th>
+                    <th>Status</th>
+                    <th>Detalhes</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for sol in sol_list %}
+                  <tr>
+                    <td>{{sol.date}}</td>
+                    <td>{{sol.user.first_name}}</td>
+                    <td>{{sol.title}}</td>
+                    <td>{{sol.area}}</td>
+                    <td>{{sol.status}}</td>
+                    <td><a href="{% url 'core:solicitacao_report' sol.id %}" class="btn btn-primary">Ver mais</a></td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </body>
+</html>

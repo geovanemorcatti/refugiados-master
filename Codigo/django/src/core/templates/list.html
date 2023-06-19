@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  {% include 'components/head.html' %}
+  <body>
+    
+  {% include 'components/nav.html' %}
+
+  <div class="container mt-5">
+    {% if deleted %}
+    <div class="text-white bg-danger p-3 mb-5">Cadastro deletado com sucesso.</div>
+    {% endif %}
+    <div class="row">
+      {% for refugiado in refugiados %}
+      <div class="card col-md-4 mx-3 my-3" style="width: 18rem;">
+        <div class="card-body d-flex justify-content-between flex-wrap">
+          <h5 class="card-title w-100" id="nomelista">{{refugiado.name}}</h5>
+          <a href="{% url 'core:refugiado_report' refugiado.id %}" class="card-link d-block mb-3 w-100">Ver detalhes</a>
+          <a href="{% url 'core:refugiado_edit' refugiado.id %}" class="btn px-3 btn-primary">Editar</a>
+          <a href="{% url 'core:refugiado_delete' refugiado.id %}" class="btn px-3 btn-danger">Apagar</a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  </body>
+</html>

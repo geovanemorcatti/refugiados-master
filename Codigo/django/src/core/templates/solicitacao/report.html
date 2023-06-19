@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  {% include 'components/head.html' %}
+  <style>
+    th,td {
+      text-align: center;
+    }
+  </style>
+  <body>
+    
+  {% include 'components/nav.html' %}
+
+  <div class="container mt-5">
+    {% if edited %}
+    <div class="text-white bg-success p-3 mb-5">Cadastro editado com sucesso.</div>
+    {% endif %}
+    {% if sent %}
+    <div class="text-white bg-success p-3 mb-5">Solicitação enviada.</div>
+    {% endif %}
+    <div class="row">
+      <div class="col-12 card px-0">
+        <div class="card-header w-100">
+          <h2 class="text-center">{{sol.title}}</h2>
+          <h5 class="text-center">Solicitação para {{ref.name}}</h5>
+        </div>
+        <div class="card-body">
+          <div class="card mb-5">
+            <div class="card-header py-1">
+              <h5 class="my-0">Ações</h5>
+            </div>
+            <div class="card-body">
+              <form class="w-100 row my-3" method="POST" action="{% url 'core:solicitacao_report' sol.id %}">
+                {% csrf_token %}
+                <div class="col-6"><input type="text" name="status" class="form-control" value="{{sol.status}}"></div>
+                <button type="submit" class="btn btn-primary col-3">Altear status</button>
+              </form>
+              {% if not sol.emailSent %}
+                <form class="" method="POST" action="{% url 'core:solicitacao_send' sol.id %}">
+                  {% csrf_token %}
+                  <button type="submit" class="btn btn-success my-1">Encaminhar solicitação</button>
+                </form>
+              {% endif %}
+              <div class="w-100"><a href="{% url 'core:solicitacao_delete' sol.id %}" class="btn btn-danger my-1">Deletar</a></div>
+            </div>
+          </div>
+          <div class="card mb-5">
+            <div class="card-header py-1">
+              <h5 class="my-0">Texto</h5>
+            </div>
+            <div class="card-body">
+              <form class="w-100 row my-3 justify-content-center" method="POST" action="{% url 'core:solicitacao_text_update' sol.id %}">
+                {% csrf_token %}
+                <div class="col-12"><textarea rows="6" name="text" class="form-control" >{{sol.text}}</textarea></div>
+                <button type="submit" class="btn btn-primary col-2 mt-3">Salvar</button>
+              </form>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <h4 class="text-center">Histórico de ações</h4>
+            </div>
+            <div class="card-body">
+              <table class="table ">
+                <thead class="thead-light bg-dark text-white">
+                  <tr>
+                    <th>Data</th>
+                    <th>Autor(a)</th>
+                    <th>Ação</th>
+                    <th>Detalhes</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for act in act_list %}
+                  <tr>
+                    <td>{{act.date}}</td>
+                    <td>{{act.user.first_name}}</td>
+                    <td>{{act.title}}</td>
+                    <td>{{act.text}}</td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+cff-version: 1.0.1
+message: Please cite this software using these metadata.
+title: Refugiados
+authors:
+  - family-names: de Freitras Quiroz Morcatti
+    given-names: Geovane 
+  - family-names: Luiz Carvalho Pinto
+    given-names: Guilherme  
+  - family-names: Alves da Silva Sales
+    given-names: Thalles
+  - family-names: Henrique Ladislau Biagini
+    given-names: Guilherme 
+  - name-suffix: Professor
+    affiliation: PUC Minas
+    family-names: Lúcia da Silva
+    given-names: Soraia
+  - name-suffix: Professor
+    affiliation: PUC Minas
+    family-names: Marjorie
+    given-names: Ivre
+keywords:
+  - Refugiados
+  - Extensão
+repository-code: https://github.com/ICEI-PUC-Minas-PPLES-TI/plf-es-2021-2-ti4-0658100-refugiados.git
+license: CC-BY-4.0
+version: 1.0.0
+date-released: 2021-12-22
